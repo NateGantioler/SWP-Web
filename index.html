@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
     <title>Advice Generator</title>
-    <style>
-        h1 {
-            align-items: center;
-        }
-    </style>
 </head>
 
-
-
 <body>
-    <h1>Advice Generator</h1>
-    <button id="getAdviceButton">Get Advice</button>
+    <div class="title">
+        <div class="titleBox">
+            <div class="titleText">
+                THE <span style="font-family: 'Lobster', sans-serif; font-size: 96px;"> Useless </span> API
+            </div>
+        </div>
+    </div>
+
+    <div class="mainBox">
+        <button id="getAdviceButton">Get Advice</button>
+    </div>
+
+    
     <div id="advice"></div>
 
     <script>
@@ -31,5 +38,4 @@
         });
     </script>
 </body>
-
 </html>
