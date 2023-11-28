@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
     <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
-    <title>Advice Generator</title>
+    <title>The USELESS Api</title>
 </head>
 
 <body>
@@ -19,18 +19,57 @@
     </div>
 
     <div class="mainBox">
+        <div id="mainBoxTitle">Advice Generator</div>
+        <div id="mainBoxText"></div>
         <button id="getAdviceButton">Get Advice</button>
+        <div style= "text-align: right;">Hallo</div>
     </div>
-
+    <div class="dad"></div>
     
-    <div id="advice"></div>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+    /**
+     * Sample JavaScript code for search.cse.list
+     * See instructions for running APIs Explorer code samples locally:
+     * https://developers.google.com/explorer-help/code-samples#javascript
+     */
+
+    function loadClient() {
+        gapi.client.setApiKey("AIzaSyBpSTHzqOR-mmjk0If351rH03pokK4ycus");
+        return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
+            .then(function() { console.log("GAPI client loaded for API"); },
+                function(err) { console.error("Error loading GAPI client for API", err); });
+    }
+    // Make sure the client is loaded before calling this method.
+    function execute() {
+        return gapi.client.search.cse.list({
+        "cx": "1697cb11e1cae49e7",
+        "num": 1,
+        "q": "Baum",
+        "start": 0,
+        "searchType": "image"
+        })
+            .then(function(response) {
+                    // Handle the results here (response.result has the parsed body).
+                    console.log("Response", response);
+                    document.getElementById('searchImage').image = response.result.items[0].image;
+                },
+                function(err) { console.error("Execute error", err); });
+    }
+    gapi.load("client");
+    </script>
+    <button onclick="loadClient()">load</button>
+    <button onclick="execute()">execute</button>
+
+    <img id="searchImage" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+
 
     <script>
         document.getElementById('getAdviceButton').addEventListener('click', function () {
             fetch('https://api.adviceslip.com/advice')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('advice').textContent = data.slip.advice;
+                    document.getElementById('mainBoxText').textContent = data.slip.advice;
                 })
                 .catch(error => {
                     console.error('Error fetching advice: ', error);

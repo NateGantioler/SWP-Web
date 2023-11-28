@@ -35,10 +35,36 @@ body {
     position: relative;
 }
 
+#mainBoxTitle{
+    font-family: 'Lobster', sans-serif;
+    padding: 30px;
+    font-size: 80px;
+}
+
+#mainBoxText{
+    font-family: 'Koulen', sans-serif;
+    font-size: 50px;
+    padding-left: 30px;
+}
+
 #getAdviceButton{
     margin: 10px;
     position: absolute;
     bottom: 0px;
     height: 74px;
     width: 274px;
+    border: 3px solid #000000;
+    background-color: #d9d9d9;
+    font-size: 30px;
+    font-family: 'Koulen', sans-serif;
 }
+
+#getAdviceButton:hover{
+    background-color: rgb(209, 190, 162);
+}
+
+#getAdviceButton:active{
+    transform: translateY(4px);
+    background-color: rgb(189, 170, 141);
+}
+
