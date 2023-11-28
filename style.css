@@ -29,7 +29,7 @@ body {
     margin:39px;
     background-color: #d9d9d9;
     width: 1822px;
-    height: 651px;
+    height: 250px;
     border-style: solid;
     border-width: 3px;
     position: relative;
@@ -45,12 +45,23 @@ body {
     font-family: 'Koulen', sans-serif;
     font-size: 50px;
     padding-left: 30px;
+    margin-top: 30px;
 }
 
+input[type=text] {
+    width: 40%;
+    padding: 12px 20px;
+    margin-left:30px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    height:74px;
+    font-size: 30px;
+    font-family: 'Koulen', sans-serif;
+  }
+
 #getAdviceButton{
-    margin: 10px;
-    position: absolute;
-    bottom: 0px;
+    margin-top: 20px;
+    margin-left:10px;
     height: 74px;
     width: 274px;
     border: 3px solid #000000;
@@ -66,5 +77,10 @@ body {
 #getAdviceButton:active{
     transform: translateY(4px);
     background-color: rgb(189, 170, 141);
+}
+
+#searchImage{
+    margin-left: 30px;
+    margin-bottom: 30px;
 }
 

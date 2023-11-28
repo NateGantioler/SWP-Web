@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
     <title>The USELESS Api</title>
 </head>
@@ -13,26 +16,21 @@
     <div class="title">
         <div class="titleBox">
             <div class="titleText">
-                THE <span style="font-family: 'Lobster', sans-serif; font-size: 96px;"> Useless </span> API
+                Random <span style="font-family: 'Lobster Two', sans-serif; font-size: 96px;"> Image </span>
             </div>
         </div>
     </div>
 
     <div class="mainBox">
-        <div id="mainBoxTitle">Advice Generator</div>
-        <div id="mainBoxText"></div>
-        <button id="getAdviceButton">Get Advice</button>
-        <div style= "text-align: right;">Hallo</div>
+        <div id="mainBoxText">Write anything you want an image from into the Space below. <br>Press Load once before your first search and then press search.</br></div>
+        
+        <input type="text" id="searchInput">
+        <button id="getAdviceButton" onclick="loadClient()">load</button>
+        <button id="getAdviceButton" onclick="execute()">search</button>
     </div>
-    <div class="dad"></div>
     
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
-    /**
-     * Sample JavaScript code for search.cse.list
-     * See instructions for running APIs Explorer code samples locally:
-     * https://developers.google.com/explorer-help/code-samples#javascript
-     */
 
     function loadClient() {
         gapi.client.setApiKey("AIzaSyBpSTHzqOR-mmjk0If351rH03pokK4ycus");
@@ -42,39 +40,24 @@
     }
     // Make sure the client is loaded before calling this method.
     function execute() {
+        var searchQuery = document.getElementById('searchInput').value;
         return gapi.client.search.cse.list({
         "cx": "1697cb11e1cae49e7",
         "num": 1,
-        "q": "Baum",
-        "start": 0,
+        "q": searchQuery,
+        "start": Math.floor(Math.random() * 50) + 50,
         "searchType": "image"
         })
             .then(function(response) {
                     // Handle the results here (response.result has the parsed body).
-                    console.log("Response", response);
-                    document.getElementById('searchImage').image = response.result.items[0].image;
+                    console.log("Response", response);  
+                    document.getElementById('searchImage').src = response.result.items[0].link;
                 },
                 function(err) { console.error("Execute error", err); });
     }
     gapi.load("client");
     </script>
-    <button onclick="loadClient()">load</button>
-    <button onclick="execute()">execute</button>
-
-    <img id="searchImage" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
-
-
-    <script>
-        document.getElementById('getAdviceButton').addEventListener('click', function () {
-            fetch('https://api.adviceslip.com/advice')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('mainBoxText').textContent = data.slip.advice;
-                })
-                .catch(error => {
-                    console.error('Error fetching advice: ', error);
-                });
-        });
-    </script>
+    
+    <img id="searchImage" src="">
 </body>
 </html>
