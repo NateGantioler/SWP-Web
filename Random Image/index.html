@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
-    <title>Random Image</title>
+    <title>The USELESS Api</title>
 </head>
 
 <body>
@@ -52,6 +52,7 @@
                     // Handle the results here (response.result has the parsed body).
                     console.log("Response", response);  
                     document.getElementById('searchImage').src = response.result.items[0].link;
+                    window.open(response.result.items[0].link)
                 },
                 function(err) { console.error("Execute error", err); });
     }
