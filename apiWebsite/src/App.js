@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import './App.css';
-import Box from './components/Box';
 import Logo from './components/Logo';
 import MainTextBox from './components/MainTextBox';
 import MyButton from './components/MyButton';
