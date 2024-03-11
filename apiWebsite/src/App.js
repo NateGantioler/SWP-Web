@@ -1,16 +1,25 @@
 import './App.css';
-import Logo from './components/Logo';
-import MainTextBox from './components/MainTextBox';
-import MyButton from './components/MyButton';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Main from './components/Main';
+import Teams from './components/Teams';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main/>,
+  },
+  {
+    path: "/test",
+    element: <Teams/>,
+  },
+]);
 
 function App() {
   return (
-    <div class="bg-rose-bg w-screen h-screen absolute pl-10">
-      <Logo/>
-      <MainTextBox/>
-      <MyButton/>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
